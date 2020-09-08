@@ -1,6 +1,5 @@
-%h1 Welcome#index
-%p Find me in app/views/welcome/index.html.haml
+.row
+  .col
+    %h1= "Welcome #{current_user.email}"
 
-= @svg.html_safe
-
-= link_to 'Logout', destroy_user_session_path, :method => :delete
+    = @svg.html_safe

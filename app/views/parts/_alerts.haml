@@ -1,14 +1,13 @@
-.container
-  - if alert
-    .alert.alert-danger.alert-dismissible.fade.show{ role: 'alert' }
-      = alert
-      %button.close{ :'data-dismiss' => 'alert', :'aria-label' => 'close', :type => 'button'}
-        %span{ 'aria-hidden': true } 
-          &times;
+- if alert
+  .alert.alert-danger.alert-dismissible.fade.show{ role: 'alert' }
+    = alert
+    %button.close{ :'data-dismiss' => 'alert', :'aria-label' => 'close', :type => 'button'}
+      %span{ 'aria-hidden': true }
+        &times;
 
-  - if notice
-    .alert.alert-info.alert-dismissible.fade.show{ role: 'alert' }
-      = notice
-      %button.close{ :'data-dismiss' => 'alert', :'aria-label' => 'close', :type => 'button'}
-        %span{ 'aria-hidden': true } 
-          &times;
+- if notice
+  .alert.alert-info.alert-dismissible.fade.show{ role: 'alert' }
+    = notice
+    %button.close{ :'data-dismiss' => 'alert', :'aria-label' => 'close', :type => 'button'}
+      %span{ 'aria-hidden': true }
+        &times;

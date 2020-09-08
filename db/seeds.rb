@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+admin = User.create(email: 'admin@pintu.ch', password: ENV['admin_password'])
+admin.add_role :admin
+admin.otp_secret = User.generate_otp_secret
+admin.save!
