@@ -56,4 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # usrconf
 gem 'haml-rails', '~> 2.0'
+
 gem 'devise'
+gem 'devise-two-factor'
+gem 'rqrcode'
