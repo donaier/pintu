@@ -1,3 +1,6 @@
 class User < ApplicationRecord
-  devise :recoverable, :two_factor_authenticatable, :otp_secret_encryption_key => ENV['encrypt_key']
+  rolify
+  devise  :recoverable, 
+          :two_factor_authenticatable, 
+          :otp_secret_encryption_key => ENV['encrypt_key']
 end
