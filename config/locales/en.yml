@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  helpers:
+    label:
+      user:
+        password: 'Password'
+        email: 'Email'
+        otp_attempt: 'Validation Code'
