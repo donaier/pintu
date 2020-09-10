@@ -1,12 +1,37 @@
-%nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0.shadow
+%nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0.shadow.text-center
   = link_to 'p:int:u', root_path, class: 'navbar-brand col-md-3 col-lg-2 mr-0 px-3'
+  .info-container
+    = render 'parts/alerts'
+  %ul.navbar-nav.navbar-icons.flex-row.mx-4.my-2
+    = link_to root_path do
+      %li.nav-item.ni-1
+        = svg 'envelope'
+    = link_to root_path do
+      %li.nav-item.ni-2
+        = svg 'id-card'
+    = link_to root_path do
+      %li.nav-item.ni-3
+        = svg 'cog'
 
 .container-fluid
   .row
-    %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.bg-light.sidebar.collapse
+    %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.sidebar.collapse
       .sidebar-sticky.pt-3
         %ul.nav.flex-column
-          .nav-item
-            = link_to 'User', root_path, class: 'nav-link'
+          .nav-item.primary
+            = link_to 'Menschen', root_path, class: 'nav-link'
+          .nav-item.secondary
+            = link_to 'erstellen', root_path, class: 'nav-link'
+          .nav-item.primary
+            = link_to 'Kurse', root_path, class: 'nav-link'
+          .nav-item.secondary
+            = link_to 'erstellen', root_path, class: 'nav-link'
+          .nav-item.secondary
+            = link_to 'auswerten', root_path, class: 'nav-link'
+        - if current_user.has_role? :admin
+          %ul.nav.flex-column.admin
+            .nav-item
+              = link_to 'Mitarbeiter', root_path, class: 'nav-link'
+        %ul.nav.flex-column.logout.text-center
           .nav-item
             = link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'nav-link'

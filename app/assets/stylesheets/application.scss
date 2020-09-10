@@ -1,5 +1,8 @@
- @import 'bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 
- @import 'parts/auth';
- @import 'parts/nav';
- @import 'parts/welcome';
+@import 'parts/variables';
+@import 'parts/base';
+@import 'parts/alerts';
+@import 'parts/auth';
+@import 'parts/nav';
+@import 'parts/welcome';

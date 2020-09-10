@@ -1,32 +1,12 @@
-body
-  font-size: .875rem
-
-
-.feather
-  width: 16px
-  height: 16px
-  vertical-align: text-bottom
-
-
-/*
- * Sidebar
- */
-
 .sidebar
   position: fixed
   top: 0
   bottom: 0
   left: 0
-  z-index: 100 /* Behind the navbar */
-  padding: 48px 0 0 /* Height of navbar */
+  z-index: 100
+  padding: 54px 0 0
+  background: $offwhite-d
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1)
-
-
-@media (max-width: 767.98px)
-  .sidebar
-    top: 5rem
-  
-
 
 .sidebar-sticky
   position: relative
@@ -34,70 +14,69 @@ body
   height: calc(100vh - 48px)
   padding-top: .5rem
   overflow-x: hidden
-  overflow-y: auto /* Scrollable contents if viewport is shorter than content. */
-
-
-@supports ((position: -webkit-sticky) or (position: sticky))
-  .sidebar-sticky
-    position: -webkit-sticky
-    position: sticky
-  
-
-
-.sidebar .nav-link
-  font-weight: 500
-  color: #333
-
-
-.sidebar .nav-link .feather
-  margin-right: 4px
-  color: #999
-
-
-.sidebar .nav-link.active
-  color: #007bff
-
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather
-  color: inherit
-
-
-.sidebar-heading
-  font-size: .75rem
-  text-transform: uppercase
-
-
-/*
- * Navbar
- */
+  overflow-y: auto
 
 .navbar-brand
   padding-top: .75rem
   padding-bottom: .75rem
   font-size: 1rem
-  background-color: rgba(0, 0, 0, .25)
+  background: $purple
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25)
 
+.navbar-icons .nav-item
+  position: absolute
+  top: 12px
+  height: 50px
+  width: 50px
+  background: $orange
+  border-radius: 50%
+  padding: 10px
+  &:hover
+    background: darken($orange, 10%)
+  svg
+    max-width: 100%
+    max-height: 100%
+    path
+      fill: $offwhite-d
 
-.navbar .navbar-toggler
-  top: .25rem
-  right: 1rem
+  &.ni-1
+    right: 180px
+  &.ni-2
+    right: 115px
+  &.ni-3
+    right: 50px
 
-
-.navbar .form-control
-  padding: .75rem 1rem
-  border-width: 0
-  border-radius: 0
-
-
-.form-control-dark
-  color: #fff
-  background-color: rgba(255, 255, 255, .1)
-  border-color: rgba(255, 255, 255, .1)
-
-
-.form-control-dark:focus
-  border-color: transparent
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25)
-
+.nav
+  margin-left: 10px
+  margin-right: 10px
+  .nav-link
+    padding: 8px 4px
+  .nav-item
+    border-radius: 6px
+    &.primary a:before
+      content: '::  '
+      color: $emerald
+    &.secondary
+      margin-left: 13px
+    &:hover
+      background: darken($offwhite-d, 5%)
+.nav.logout
+  position: absolute
+  width: 100%
+  bottom: 20px
+  margin: 0
+  border-top: 1px solid lighten($purple, 40%)
+  .nav-item
+    margin: 10px 10px 0
+    border-radius: 0
+.nav.admin
+  position: relative
+  border-top: 1px solid lighten($purple, 40%)
+  margin-top: 40px
+  padding-top: 10px
+  &:before
+    content: 'admin-navigation'
+    font-size: 12px
+    position: absolute
+    top: -18px
+    right: 20px
