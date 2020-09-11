@@ -1,6 +1,6 @@
 = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-signin' }) do |f|
-  = image_tag 'logo.png', class: 'mb-4'
-  %h1.h3.mb-3.font-weight-normal please sign in
+  -# = image_tag 'logo.png', class: 'mb-4'
+  %h1.mb-5.font-weight-normal p:int:u
   .form-group
     = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'email', required: true, autofocus: true
     = f.password_field :password, autocomplete: "current-password", class: 'form-control', placeholder: 'password', required: true

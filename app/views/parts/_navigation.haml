@@ -16,17 +16,17 @@
 .container-fluid
   .row
     %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.sidebar.collapse
-      .sidebar-sticky.pt-3
+      .sidebar-sticky
         %ul.nav.flex-column
-          .nav-item.primary
+          .nav-item.primary.humans
             = link_to 'Menschen', root_path, class: 'nav-link'
-          .nav-item.secondary
+          .nav-item.secondary.add
             = link_to 'erstellen', root_path, class: 'nav-link'
-          .nav-item.primary
+          .nav-item.primary.courses
             = link_to 'Kurse', root_path, class: 'nav-link'
-          .nav-item.secondary
+          .nav-item.secondary.add
             = link_to 'erstellen', root_path, class: 'nav-link'
-          .nav-item.secondary
+          .nav-item.secondary.exclamation
             = link_to 'auswerten', root_path, class: 'nav-link'
         - if current_user.has_role? :admin
           %ul.nav.flex-column.admin

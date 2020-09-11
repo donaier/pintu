@@ -5,7 +5,7 @@
   left: 0
   z-index: 100
   padding: 54px 0 0
-  background: $offwhite-d
+  background-color: $offwhite-d
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1)
 
 .sidebar-sticky
@@ -20,7 +20,7 @@
   padding-top: .75rem
   padding-bottom: .75rem
   font-size: 1rem
-  background: $purple
+  background-color: $purple
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25)
 
 .navbar-icons .nav-item
@@ -28,11 +28,12 @@
   top: 12px
   height: 50px
   width: 50px
-  background: $orange
+  background-color: $orange
+  transition: background-color .2s
   border-radius: 50%
   padding: 10px
   &:hover
-    background: darken($orange, 10%)
+    background-color: darken($orange, 10%)
   svg
     max-width: 100%
     max-height: 100%
@@ -53,13 +54,45 @@
     padding: 8px 4px
   .nav-item
     border-radius: 6px
+    transition: background-color .2s
+    &.primary
+      position: relative
+      margin-top: 20px
+      &.humans:after
+        background-image: url('icons/globe-2.svg')
+      &.courses:after
+        background-image: url('icons/book-closed.svg')
+      &:after
+        content: ''
+        position: absolute
+        right: -20px
+        top: 10px
+        background-repeat: no-repeat
+        background-position: center
+        background-size: contain
+        height: 60px
+        width: 60px
+        opacity: .1
+        transform: rotate(-35deg)
     &.primary a:before
-      content: '::  '
+      content: '::'
       color: $emerald
+      width: 13px
+      display: inline-block
     &.secondary
       margin-left: 13px
+      &.add a:before
+        content: '+'
+        color: $emerald
+        width: 20px
+        display: inline-block
+      &.exclamation a:before
+        content: '!'
+        color: $emerald
+        width: 20px
+        display: inline-block
     &:hover
-      background: darken($offwhite-d, 5%)
+      background-color: darken($offwhite-d, 5%)
 .nav.logout
   position: absolute
   width: 100%
