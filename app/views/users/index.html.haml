@@ -10,6 +10,7 @@
           %th Username
           %th Email
           %th Gruppen
+          %th 2-Faktor Security
           %th
 
       %tbody
@@ -20,6 +21,10 @@
             %td
               - user.roles.each do |role|
                 = role.name
+            %td.p-0
+              .icon-toggler{ class: user.otp_required_for_login? ? 'on' : 'off' }
+                = svg 'lock'
+              -# %span.badge.badge-pill.badge-primary aktiv
             %td.p-0.text-right
               = link_to edit_user_path(user), class: 'icon-link' do
                 = svg 'pencil'

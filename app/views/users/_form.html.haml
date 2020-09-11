@@ -20,16 +20,39 @@
       = f.email_field :email, class: 'form-control mb-4', required: true
       .invalid-feedback
         gültige Email-Adresse ist erforderlich
-  - if @user.persisted?
-    .form-row
-      .col-2
-        = f.label :roles
-      .col-4
-
-
   .form-row
     .col-6.text-right
       .actions.pt-2
         = f.submit 'Speichern', class: 'btn btn-save'
+
+
+  - if @user.persisted?
+    .edit-actions
+      .form-row
+        .col-2
+          = f.label :roles
+        .col-4
+          - @user.roles.each do |role|
+            = role.name
+      .form-row
+        .col-2
+          = f.label :otp_active
+        .col-1
+          .icon-toggler.small{ class: @user.otp_required_for_login? ? 'on' : 'off' }
+            = svg 'lock'
+            .on
+              %strong aktiv
+            .off
+              %p inaktiv
+
+        .col-3.text-right
+          - if @user.otp_required_for_login
+            = link_to root_path, class: 'icon-button btn' do
+              = svg 'iphone'
+              QR-Code Anzeigen
+          - else
+            = link_to enable_user_path(@user), method: :patch, class: 'icon-button btn' do
+              = svg 'key'
+              Aktivieren
 
 = javascript_pack_tag 'form_validation'

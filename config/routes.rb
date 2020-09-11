@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   scope '/admin' do
-    resources :users
+    resources :users do
+      patch :enable, on: :member
+    end
   end
 
   get 'welcome/index'

@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if params[:user][:password].blank?
+    if params[:user] && params[:user][:password].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
@@ -40,6 +40,12 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def enable
+    @user = User.find(params[:id])
+    @user.update_attribute(:otp_required_for_login, true)
+    redirect_to edit_user_path @user
   end
 
   def destroy
@@ -53,6 +59,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :username)
+      params.require(:user).permit(:email, :password, :password_confirmation, :username, :otp_required_for_login)
     end
 end

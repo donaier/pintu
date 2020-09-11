@@ -19,6 +19,17 @@ main
         margin: 23%
         path
           fill: $offwhite-d
+    &.icon-button
+      height: 40px
+      padding: 5px
+      color: $emerald
+      font-weight: 500
+      background-color: $offwhite-d
+      &:hover
+        background-color: darken($offwhite-d, 5%)
+      svg
+        width: 40px
+        height: 100%
     &.add-link, &.edit-link
       padding: 8px 16px
       border-radius: 6px
@@ -51,3 +62,30 @@ main
       margin-left: 8px
       position: relative
       top: -8px
+
+  .icon-toggler
+    height: 35px
+    width: 35px
+    padding: 3px
+    margin: 5px
+    svg
+      height: 100%
+      width: 100%
+    &.small
+      height: 30px
+      width: 30px
+    &.on
+      .on
+        display: block
+      svg path
+        fill: $blue
+    &.off
+      .off
+        display: block
+      svg path
+        fill: darken($offwhite-d, 5%)
+    .on, .off
+      display: none
+      position: absolute
+      top: 10px
+      left: 40px
