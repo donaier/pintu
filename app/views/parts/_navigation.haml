@@ -30,7 +30,7 @@
             = link_to 'auswerten', root_path, class: 'nav-link'
         - if current_user.has_role? :admin
           %ul.nav.flex-column.admin
-            .nav-item
+            .nav-item.primary.users
               = link_to 'Mitarbeiter', root_path, class: 'nav-link'
         %ul.nav.flex-column.logout.text-center
           .nav-item
