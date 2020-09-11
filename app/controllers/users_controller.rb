@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :enable, :update_password]
+  before_action :set_qr, only: [:show, :edit]
+
 
   def index
     @users = User.all
@@ -43,7 +45,6 @@ class UsersController < ApplicationController
   end
 
   def enable
-    @user = User.find(params[:id])
     @user.update_attribute(:otp_required_for_login, true)
     redirect_to edit_user_path @user
   end
@@ -56,6 +57,18 @@ class UsersController < ApplicationController
   private
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def set_qr
+      qrcode = RQRCode::QRCode.new(@user.otp_provisioning_uri('pintu', issuer: "pintu:#{@user.email}"))
+
+      @qr = qrcode.as_svg(
+        offset: 0,
+        color: '000',
+        shape_rendering: 'crispEdges',
+        module_size: 6,
+        standalone: true
+      )
     end
 
     def user_params

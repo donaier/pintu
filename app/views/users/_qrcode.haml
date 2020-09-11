@@ -1,0 +1,12 @@
+#qrCode.modal.fade{ tabindex: '-1' }
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h5.modal-title QR- Code
+        %button.close{ type: 'button', 'data-dismiss': 'modal' }
+          &times;
+      .modal-body.text-center
+        = @qr.html_safe
+        %p= "pintu:#{@user.email}"
+      .modal-footer
+        %p Code mit Google-Authenticator App scannen.

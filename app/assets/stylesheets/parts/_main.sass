@@ -48,6 +48,18 @@ main
       content: '*'
       position: relative
       top: 4px
+  button.btn
+    color: $emerald
+    font-weight: 500
+    background-color: $offwhite-d
+    &:hover
+      background-color: darken($offwhite-d, 5%)
+    &.icon-button
+      height: 40px
+      padding: 5px
+      svg
+        width: 40px
+        height: 100%
 
   .table
   .table-hover tbody tr:hover
@@ -58,6 +70,9 @@ main
     padding: 12px
     h1
       display: inline-block
+      a
+        position: static
+        margin-left: 0
     a
       margin-left: 8px
       position: relative
@@ -89,3 +104,9 @@ main
       position: absolute
       top: 10px
       left: 40px
+  .btn
+    color: $emerald
+    font-weight: 500
+    background-color: $offwhite-d
+    &:hover
+      background-color: darken($offwhite-d, 5%)

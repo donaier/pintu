@@ -1,10 +1,10 @@
 .title-box
-  %h1= @user.username + ' bearbeiten'
+  %h1
+    = link_to @user.username, user_path(@user)
+    bearbeiten
 
 .row
   .col-10
     = render 'form'
 
-= link_to 'Show', @user
-\|
-= link_to 'Back', users_path
+= render 'qrcode'

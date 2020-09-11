@@ -10,12 +10,12 @@
           %th Username
           %th Email
           %th Gruppen
-          %th 2-Faktor Security
+          %th Status
           %th
 
       %tbody
         - @users.each do |user|
-          %tr
+          %tr{ class: user == current_user ? 'table-warning' : ''}
             %td.p-0= link_to user.username, user, class: 'block-link'
             %td= user.email
             %td
@@ -24,7 +24,6 @@
             %td.p-0
               .icon-toggler{ class: user.otp_required_for_login? ? 'on' : 'off' }
                 = svg 'lock'
-              -# %span.badge.badge-pill.badge-primary aktiv
             %td.p-0.text-right
               = link_to edit_user_path(user), class: 'icon-link' do
                 = svg 'pencil'
