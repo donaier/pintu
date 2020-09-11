@@ -1,2 +1,5 @@
 .title-box
-  %h1= "Hallo #{current_user.username}"
+  %h1= I18n.t('welcome_user', username: current_user.username)
+  %p= I18n.t('welcome_info')
+
+  = current_user.roles.count

@@ -1,32 +1,28 @@
 .title-box
   %h1= @user.username
-  = link_to 'bearbeiten', edit_user_path(@user), class: 'edit-link'
+  - if @user == current_user || current_user.has_role?(:user_manager) || current_user.has_role?(:admin)
+    = link_to I18n.t('edit'), edit_user_path(@user), class: 'edit-link'
 
 .row
   .col-10
-    = form_with class: 'py-4 form' do |f|
+    = form_for @user, html: { class: 'py-4 form' } do |f|
       .form-row
         .col-2
           = f.label :username
         .col-4
           = f.text_field :username, class: 'form-control mb-4', disabled: true, value: @user.username
-          .invalid-feedback
-            Username ist erforderlich
       .form-row
         .col-2
           = f.label :email
         .col-4
           = f.email_field :email, class: 'form-control mb-4', disabled: true, value: @user.email
-          .invalid-feedback
-            gültige Email-Adresse ist erforderlich
-
       .edit-actions
         .form-row
           .col-2
             = f.label :roles
           .col-4
             - @user.roles.each do |role|
-              = role.name
+              = role.name.capitalize
         .form-row
           .col-2
             = f.label :otp_active
@@ -34,19 +30,19 @@
             .icon-toggler.small{ class: @user.otp_required_for_login? ? 'on' : 'off' }
               = svg 'lock'
               .on
-                %strong aktiv
+                %strong= I18n.t('active')
               .off
-                %p inaktiv
+                %p= I18n.t('inactive')
 
           .col-3.text-right
             - if @user == current_user
               - if @user.otp_required_for_login
                 %button.btn.icon-button{ type: 'button', 'data-toggle': 'modal', 'data-target': '#qrCode'}
                   = svg 'iphone'
-                  QR-Code Anzeigen
+                  = I18n.t('show_qr')
               - else
                 = link_to enable_user_path(@user), method: :patch, class: 'icon-button btn' do
                   = svg 'key'
-                  Aktivieren
+                  = I18n.t('activate')
 
 = render 'qrcode'

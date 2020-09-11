@@ -1,16 +1,17 @@
 .title-box
-  %h1 Mitarbeiter
-  = link_to 'erstellen', new_user_path, class: 'add-link'
+  %h1= I18n.t('user.title')
+  - if current_user.has_role?(:user_manager) || current_user.has_role?(:admin)
+    = link_to I18n.t('create').downcase, new_user_path, class: 'add-link'
 
 .row
   .col-10
     %table.table.table-borderless.table-hover
       %thead
         %tr
-          %th Username
-          %th Email
-          %th Gruppen
-          %th Status
+          %th= I18n.t('activerecord.attributes.user.username')
+          %th= I18n.t('activerecord.attributes.user.email')
+          %th= I18n.t('activerecord.attributes.user.roles')
+          %th= I18n.t('activerecord.attributes.user.otp_active')
           %th
 
       %tbody
@@ -20,12 +21,13 @@
             %td= user.email
             %td
               - user.roles.each do |role|
-                = role.name
+                = role.name.humanize
             %td.p-0
               .icon-toggler{ class: user.otp_required_for_login? ? 'on' : 'off' }
                 = svg 'lock'
             %td.p-0.text-right
-              = link_to edit_user_path(user), class: 'icon-link' do
-                = svg 'pencil'
-              = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-link' do
-                = svg 'trashcan'
+              - if current_user.has_role?(:user_manager) || current_user.has_role?(:admin)
+                = link_to edit_user_path(user), class: 'icon-link' do
+                  = svg 'pencil'
+                = link_to user, method: :delete, data: { confirm: I18n.t('user.confirm_delete', user: user.username) }, class: 'icon-link' do
+                  = svg 'trashcan'

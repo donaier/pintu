@@ -1,7 +1,7 @@
 .title-box
   %h1
     = link_to @user.username, user_path(@user)
-    bearbeiten
+    = I18n.t('edit').downcase
 
 .row
   .col-10

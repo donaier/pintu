@@ -8,5 +8,6 @@
 
 admin = User.create(email: 'admin@pintu.ch', password: ENV['admin_password'])
 admin.add_role :admin
+admin.add_role :user_manager
 admin.otp_secret = User.generate_otp_secret
 admin.save!

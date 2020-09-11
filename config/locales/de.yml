@@ -1,0 +1,60 @@
+de:
+  welcome_user: Hallo %{username}
+  welcome_info: Gut, dass du wieder da bist!
+
+  save: Speichern
+  edit: Bearbeiten
+  create: Erstellen
+  active: Aktiviert
+  inactive: Deaktiviert
+  qr: QR-Code
+  show_qr: QR-Code Anzeigen
+  qr_info: QR-Code muss mit Google Authenticator App gescannt werden.
+  activate: Aktivieren
+
+  devise:
+    sessions:
+      user:
+        signed_in: Erfolgreich angemeldet!
+
+  errors:
+    messages:
+      not_saved: Konnte nicht gespeichert werden
+
+  user:
+    title: Mitarbeiter
+    new: 'Mitarbeiter erstellen:'
+    create:
+      success: Mitarbeiter erstellt!
+    update:
+      success: Mitarbeiter gespeichert!
+      password: Passwort ändern
+    destroy:
+      success: Mitarbeiter gelöscht.
+    change_password: Passwort ändern
+    confirm_delete: User %{user} wirklich löschen?
+
+  activerecord:
+    attributes:
+      user:
+        username: Username
+        email: Email
+        password: Passwort
+        new_password: Neues Passwort
+        password_confirmation: gleich nocheinmal
+        roles: Rollen
+        otp_active: Security Status
+    errors:
+      models:
+        user:
+          error_flash: Es gab ein Problem...
+          attributes:
+            email:
+              blank: darf nicht leer sein.
+              taken: existiert schon bei einem User.
+              form: Eine gültige Email-Adresse ist erforderlich.
+            username:
+              blank: darf nicht leer sein.
+              form: Username ist erforderlich.
+            password:
+              form: Mindestens 8 Zeichen sind erforderlich.
