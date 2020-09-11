@@ -1,0 +1,27 @@
+.title-box
+  %h1 Mitarbeiter
+  = link_to 'erstellen', new_user_path, class: 'add-link'
+
+.row
+  .col-10
+    %table.table.table-borderless.table-hover
+      %thead
+        %tr
+          %th Username
+          %th Email
+          %th Gruppen
+          %th
+
+      %tbody
+        - @users.each do |user|
+          %tr
+            %td.p-0= link_to user.username, user, class: 'block-link'
+            %td= user.email
+            %td
+              - user.roles.each do |role|
+                = role.name
+            %td.p-0.text-right
+              = link_to edit_user_path(user), class: 'icon-link' do
+                = svg 'pencil'
+              = link_to user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'icon-link' do
+                = svg 'trashcan'

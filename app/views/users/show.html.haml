@@ -1,0 +1,17 @@
+.title-box
+  %h1= @user.username
+  = link_to 'bearbeiten', edit_user_path(@user), class: 'edit-link'
+
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Password:
+  = @user.password
+%p
+  %b Username:
+  = @user.username
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path

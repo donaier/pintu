@@ -1,0 +1,53 @@
+main
+  a
+    color: $emerald
+    &:hover
+      color: $blue
+      text-decoration: none
+    &.icon-link
+      background-color: lighten($orange, 30%)
+      height: 35px
+      width: 35px
+      display: inline-block
+      border-radius: 50%
+      margin: 5px
+      &:hover
+        background-color: lighten($orange, 15%)
+      svg
+        height: 55%
+        width: 55%
+        margin: 23%
+        path
+          fill: $offwhite-d
+    &.add-link, &.edit-link
+      padding: 8px 16px
+      border-radius: 6px
+      background-color: $offwhite-d
+      transition: background-color .2s
+      &:hover
+        background-color: darken($offwhite-d, 5%)
+      &:before
+        content: ''
+        color: $purple
+        width: 20px
+        display: inline-block
+    &.add-link:before
+      content: '+'
+    &.edit-link:before
+      content: '*'
+      position: relative
+      top: 4px
+
+  .table
+  .table-hover tbody tr:hover
+    background-color: $offwhite-d
+
+  .title-box
+    border-bottom: 3px solid $emerald
+    padding: 12px
+    h1
+      display: inline-block
+    a
+      margin-left: 8px
+      position: relative
+      top: -8px
