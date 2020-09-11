@@ -1,4 +1,4 @@
-= form_for @user do |f|
+= form_for @user, html: { class: 'py-4 form needs-validation', novalidate: true } do |f|
   - if @user.errors.any?
     #error_explanation
       %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
@@ -6,14 +6,30 @@
         - @user.errors.full_messages.each do |message|
           %li= message
 
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :password
-    = f.text_field :password
-  .field
-    = f.label :username
-    = f.text_field :username
-  .actions
-    = f.submit 'Save'
+  .form-row
+    .col-2
+      = f.label :username
+    .col-4
+      = f.text_field :username, class: 'form-control mb-4', required: true
+      .invalid-feedback
+        Username ist erforderlich
+  .form-row
+    .col-2
+      = f.label :email
+    .col-4
+      = f.email_field :email, class: 'form-control mb-4', required: true
+      .invalid-feedback
+        gültige Email-Adresse ist erforderlich
+  - if @user.persisted?
+    .form-row
+      .col-2
+        = f.label :roles
+      .col-4
+
+
+  .form-row
+    .col-6.text-right
+      .actions.pt-2
+        = f.submit 'Speichern', class: 'btn btn-save'
+
+= javascript_pack_tag 'form_validation'
