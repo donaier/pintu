@@ -1,6 +1,8 @@
 de:
   welcome_user: Hallo %{username}
   welcome_info: Gut, dass du wieder da bist!
+  welcome_info_bambi: Gut, dass du da bist!
+  bambi_info: 'Als erstes gleich 2-Faktor Sicherheit mit Google Authenticator App aktivieren!'
 
   save: Speichern
   edit: Bearbeiten
@@ -24,6 +26,7 @@ de:
   user:
     title: Mitarbeiter
     new: 'Mitarbeiter erstellen:'
+    edit: 'Profil bearbeiten'
     create:
       success: Mitarbeiter erstellt!
     update:

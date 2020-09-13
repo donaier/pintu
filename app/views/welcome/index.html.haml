@@ -1,3 +1,11 @@
 .title-box
   %h1= I18n.t('welcome_user', username: current_user.username)
-  %p= I18n.t('welcome_info')
+
+  - if current_user.has_role? :bambi
+    %p= I18n.t('welcome_info_bambi')
+  - else
+    %p= I18n.t('welcome_info')
+
+- if current_user.has_role? :bambi
+  %p= I18n.t('bambi_info')
+  = link_to I18n.t('user.edit'), edit_user_path(current_user)

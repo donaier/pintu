@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.add_role(:bambi)
 
     respond_to do |format|
       if @user.save
@@ -47,6 +48,7 @@ class UsersController < ApplicationController
 
   def enable
     @user.update_attribute(:otp_required_for_login, true)
+    @user.remove_role(:bambi) if @user.has_role? :bambi
     redirect_to edit_user_path @user
   end
 
