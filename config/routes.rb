@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   scope '/admin' do
     resources :users do
       patch :enable, on: :member
+      get :add_role, on: :member
+      get :revoke_role, on: :member
     end
   end
 

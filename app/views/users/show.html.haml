@@ -1,6 +1,6 @@
 .title-box
   %h1= @user.username
-  - if @user == current_user || current_user.has_role?(:user_manager) || current_user.has_role?(:admin)
+  - if can? :read, @user
     = link_to I18n.t('edit'), edit_user_path(@user), class: 'edit-link'
 
 .row
@@ -24,7 +24,7 @@
             %ul.list-group-flush
               - @user.roles.each do |role|
                 %li.list-group-item
-                  = role.name.capitalize
+                  = role.name.humanize
         .form-row
           .col-2
             = f.label :otp_active

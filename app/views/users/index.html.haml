@@ -1,6 +1,6 @@
 .title-box
   %h1= I18n.t('user.title')
-  - if current_user.has_role?(:user_manager) || current_user.has_role?(:admin)
+  - if can? :manage, User
     = link_to I18n.t('create').downcase, new_user_path, class: 'add-link'
 
 .row
@@ -17,7 +17,12 @@
       %tbody
         - @users.each do |user|
           %tr{ class: user == current_user ? 'table-warning' : ''}
-            %td.p-0= link_to user.username, user, class: 'block-link'
+            - if can? :read, user
+              %td.p-0
+                = link_to user.username, user, class: 'block-link'
+            - else
+              %td
+                = user.username
             %td= user.email
             %td
               - user.roles.each do |role|
@@ -26,8 +31,9 @@
               .icon-toggler{ class: user.otp_required_for_login? ? 'on' : 'off' }
                 = svg 'lock'
             %td.p-0.text-right
-              - if current_user.has_role?(:user_manager) || current_user.has_role?(:admin)
+              - if can? :update, user
                 = link_to edit_user_path(user), class: 'icon-link' do
                   = svg 'pencil'
+              - if can? :destroy, user
                 = link_to user, method: :delete, data: { confirm: I18n.t('user.confirm_delete', user: user.username) }, class: 'icon-link' do
                   = svg 'trashcan'

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :enable, :update_password]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :enable, :update_password, :add_role, :revoke_role]
   before_action :set_qr, only: [:show, :edit]
 
 
@@ -53,6 +53,16 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     redirect_to users_url, notice: I18n.t('user.destroy.success')
+  end
+
+  def add_role
+    @user.add_role params[:role]
+    redirect_to edit_user_path @user
+  end
+
+  def revoke_role
+    @user.remove_role params[:role]
+    redirect_to edit_user_path @user
   end
 
   private

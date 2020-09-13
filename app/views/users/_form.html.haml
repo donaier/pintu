@@ -46,16 +46,16 @@
           = f.label :roles
         .col-4
           %ul.list-group-flush
-            - User.find_by_username('admin').roles.each do |role|
+            - Role.all.each do |role|
               %li.list-group-item
                 = role.name.humanize
                 - if can? :manage, @user
                   - if @user.has_role?(role.name)
-                    %span.badge.badge-secondary.badge-pill
-                      = '-'
+                    = link_to revoke_role_user_path(@user, role: role.name), class: 'badge badge-pill badge-light  float-right' do
+                      = '- entfernen'
                   - else
-                    %span.badge.badge-secondary.badge-pill
-                      = '+'
+                    = link_to add_role_user_path(@user, role:role.name), class: 'badge badge-pill badge-dark float-right' do
+                      = '+ hinzufügen'
 
     .form-row
       .col-2
