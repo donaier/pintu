@@ -6,6 +6,7 @@ class Ability
 
     can :read, User, id: user.id
     can :update, User, id: user.id
+    can :enable, User, id: user.id
 
     if user.has_role? :admin
       can :manage, User

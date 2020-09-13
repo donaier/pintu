@@ -39,7 +39,7 @@
           .col-3.text-right
             - if @user == current_user
               - if @user.otp_required_for_login
-                %button.btn.icon-button{ type: 'button', 'data-toggle': 'modal', 'data-target': '#qrCode'}
+                %button.btn.icon-button{ type: 'button', 'data-toggle': 'modal', 'data-target': '#qrCode' }
                   = svg 'iphone'
                   = I18n.t('show_qr')
               - else

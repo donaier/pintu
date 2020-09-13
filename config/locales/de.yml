@@ -1,8 +1,9 @@
 de:
-  welcome_user: Hallo %{username}
-  welcome_info: Gut, dass du wieder da bist!
-  welcome_info_bambi: Gut, dass du da bist!
-  bambi_info: 'Als erstes gleich 2-Faktor Sicherheit mit Google Authenticator App aktivieren!'
+  welcome_user: Hallo %{username}!
+  welcome_info: Gut, dass du wieder da bist.
+  welcome_info_bambi: Gut, dass du da bist.
+  bambi_info: 'Für den weiteren Zugriff muss ihr Profil mit einem Code geschützt werden. Dieser liefert das <b>Google Authenticator</b> App.</br></br> Halten Sie die Handy-App bereit, um den QR-Code zu scannen.'
+  bambi_instructions: 'Nach dem Aktivieren werden Sie zu ihrem Profil weitergeleitet, wo Sie den QR-Code scannen müssen, um den Zugangscode für zukünftige Logins zu erhalten.'
 
   save: Speichern
   edit: Bearbeiten
@@ -18,6 +19,9 @@ de:
     sessions:
       user:
         signed_in: Erfolgreich angemeldet!
+    failure:
+      user:
+        already_authenticated: Sie sind schon angemeldet.
 
   errors:
     messages:
@@ -37,6 +41,7 @@ de:
     change_password: Passwort ändern
     confirm_delete: User %{user} wirklich löschen?
     confirm_revoke_role: Rolle %{role} wirklich entfernen?
+    safety_warning: 'Ihr Profil muss gesichert werden.'
 
   activerecord:
     attributes:

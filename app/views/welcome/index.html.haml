@@ -1,11 +1,24 @@
 .title-box
   %h1= I18n.t('welcome_user', username: current_user.username)
-
   - if current_user.has_role? :bambi
     %p= I18n.t('welcome_info_bambi')
   - else
     %p= I18n.t('welcome_info')
 
-- if current_user.has_role? :bambi
-  %p= I18n.t('bambi_info')
-  = link_to I18n.t('user.edit'), edit_user_path(current_user)
+.row
+  - if current_user.has_role? :bambi
+    .col-6
+      .card.mt-4
+        .card-header
+          %strong= I18n.t('user.safety_warning')
+        .card-body
+          %p.card-text= I18n.t('bambi_info').html_safe
+          = link_to 'Google Authenticator Android Play Store', 'https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en', target: '_blank', class: 'btn'
+          = link_to 'Google Authenticator Apple App Store', 'https://apps.apple.com/us/app/google-authenticator/id388497605', target: '_blank', class: 'btn'
+          %br
+          %br
+          %p.card-text= I18n.t('bambi_instructions').html_safe
+        .card-footer.text-center
+          = link_to enable_user_path(current_user), method: :patch, class: 'icon-button btn' do
+            = svg 'key'
+            = I18n.t('activate')

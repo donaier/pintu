@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   def enable
     @user.update_attribute(:otp_required_for_login, true)
     @user.remove_role(:bambi) if @user.has_role? :bambi
-    redirect_to edit_user_path @user
+    redirect_to @user
   end
 
   def destroy
