@@ -47,15 +47,16 @@
         .col-4
           %ul.list-group-flush
             - Role.all.each do |role|
-              %li.list-group-item
-                = role.name.humanize
-                - if can? :manage, @user
-                  - if @user.has_role?(role.name)
-                    = link_to revoke_role_user_path(@user, role: role.name), class: 'badge badge-pill badge-light  float-right' do
-                      = '- entfernen'
-                  - else
-                    = link_to add_role_user_path(@user, role:role.name), class: 'badge badge-pill badge-dark float-right' do
-                      = '+ hinzufügen'
+              - if @user.has_role?(role.name) || can?(:manage, @user)
+                %li.list-group-item
+                  = role.name.humanize
+                  - if can? :manage, @user
+                    - if @user.has_role?(role.name)
+                      = link_to revoke_role_user_path(@user, role: role.name), class: 'badge badge-pill badge-light  float-right', data: { confirm: I18n.t('user.confirm_revoke_role', role: role.name) } do
+                        = '- entfernen'
+                    - else
+                      = link_to add_role_user_path(@user, role:role.name), class: 'badge badge-pill badge-dark float-right' do
+                        = '+ hinzufügen'
 
     .form-row
       .col-2

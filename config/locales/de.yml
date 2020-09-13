@@ -33,6 +33,7 @@ de:
       success: Mitarbeiter gelöscht.
     change_password: Passwort ändern
     confirm_delete: User %{user} wirklich löschen?
+    confirm_revoke_role: Rolle %{role} wirklich entfernen?
 
   activerecord:
     attributes:
