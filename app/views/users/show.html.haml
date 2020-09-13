@@ -21,8 +21,10 @@
           .col-2
             = f.label :roles
           .col-4
-            - @user.roles.each do |role|
-              = role.name.capitalize
+            %ul.list-group-flush
+              - @user.roles.each do |role|
+                %li.list-group-item
+                  = role.name.capitalize
         .form-row
           .col-2
             = f.label :otp_active
