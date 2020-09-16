@@ -4,6 +4,7 @@ class Ability
   def initialize(user)
     user ||= User.new
 
+    # authorised on own profile
     can :read, User, id: user.id
     can :update, User, id: user.id
     can :enable, User, id: user.id

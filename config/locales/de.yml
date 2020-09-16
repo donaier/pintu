@@ -2,8 +2,8 @@ de:
   welcome_user: Hallo %{username}!
   welcome_info: Gut, dass du wieder da bist.
   welcome_info_bambi: Gut, dass du da bist.
-  bambi_info: 'Für den weiteren Zugriff muss ihr Profil mit einem Code geschützt werden. Dieser liefert das <b>Google Authenticator</b> App.</br></br> Halten Sie die Handy-App bereit, um den QR-Code zu scannen.'
-  bambi_instructions: 'Nach dem Aktivieren werden Sie zu ihrem Profil weitergeleitet, wo Sie den QR-Code scannen müssen, um den Zugangscode für zukünftige Logins zu erhalten.'
+  bambi_info: 'Für den weiteren Zugriff muss dein Profil mit einem Code geschützt werden. Dieser liefert das <b>Google Authenticator</b> App.</br></br> Halte die Handy-App bereit, um den QR-Code zu scannen.'
+  bambi_instructions: 'Nach dem Aktivieren wirst du zu deinem Profil weitergeleitet, wo du den QR-Code scannen musst, um den Zugangscode für zukünftige Logins zu erhalten.'
 
   save: Speichern
   edit: Bearbeiten
@@ -14,6 +14,9 @@ de:
   show_qr: QR-Code Anzeigen
   qr_info: QR-Code muss mit Google Authenticator App gescannt werden.
   activate: Aktivieren
+  remove: '- entfernen'
+  add: '+ hinzufügen'
+  predefine: '+ vormerken'
 
   devise:
     sessions:
@@ -21,27 +24,27 @@ de:
         signed_in: Erfolgreich angemeldet!
     failure:
       user:
-        already_authenticated: Sie sind schon angemeldet.
+        already_authenticated: Du bist schon angemeldet.
 
   errors:
     messages:
       not_saved: Konnte nicht gespeichert werden
 
   user:
-    title: Mitarbeiter
-    new: 'Mitarbeiter erstellen:'
+    title: User
+    new: 'User erstellen:'
     edit: 'Profil bearbeiten'
     create:
-      success: Mitarbeiter erstellt!
+      success: User erstellt!
     update:
-      success: Mitarbeiter gespeichert!
+      success: User gespeichert!
       password: Passwort ändern
     destroy:
-      success: Mitarbeiter gelöscht.
+      success: User gelöscht.
     change_password: Passwort ändern
     confirm_delete: User %{user} wirklich löschen?
     confirm_revoke_role: Rolle %{role} wirklich entfernen?
-    safety_warning: 'Ihr Profil muss gesichert werden.'
+    safety_warning: 'Dein Profil muss gesichert werden.'
 
   activerecord:
     attributes:
@@ -53,6 +56,8 @@ de:
         password_confirmation: gleich nocheinmal
         roles: Rollen
         otp_active: Security Status
+        predefined_roles: Rollen
+        predefined_roles_info: werden aktiv wenn der User sein Profil aktiviert
     errors:
       models:
         user:

@@ -1,0 +1,43 @@
+.form-row
+  .col-6.text-right
+    .actions.pt-2
+      %button.btn{ type: 'button', 'data-toggle': 'modal', 'data-target': '#passwordForm'}
+        = I18n.t('user.change_password')
+      = f.submit I18n.t('save'), class: 'btn btn-save'
+.edit-actions
+  .form-row
+    .col-2
+      = f.label :roles
+    .col-4
+      %ul.list-group-flush
+        - Role.all.each do |role|
+          - if @user.has_role?(role.name) || can?(:manage, @user)
+            %li.list-group-item
+              = role.name.humanize
+              - if can? :manage, @user
+                - if @user.has_role?(role.name)
+                  = link_to revoke_role_user_path(@user, role: role.name), class: 'badge badge-pill badge-light  float-right', data: { confirm: I18n.t('user.confirm_revoke_role', role: role.name) } do
+                    = I18n.t('remove')
+                - else
+                  = link_to add_role_user_path(@user, role:role.name), class: 'badge badge-pill badge-dark float-right' do
+                    = I18n.t('add')
+
+.form-row
+  .col-2
+    = f.label :otp_active
+  .col-1
+    .icon-toggler.small{ class: @user.otp_required_for_login? ? 'on' : 'off' }
+      = svg 'lock'
+      .on
+        %strong= I18n.t('active')
+      .off
+        %p= I18n.t('inactive')
+  .col-3.text-right
+    - if @user.otp_required_for_login
+      %button.btn.icon-button{ type: 'button', 'data-toggle': 'modal', 'data-target': '#qrCode'}
+        = svg 'iphone'
+        = I18n.t('show_qr')
+    - else
+      = link_to enable_user_path(@user), method: :patch, class: 'icon-button btn' do
+        = svg 'key'
+        = I18n.t('activate')
