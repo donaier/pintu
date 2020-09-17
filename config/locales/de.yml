@@ -46,6 +46,12 @@ de:
     confirm_revoke_role: Rolle %{role} wirklich entfernen?
     safety_warning: 'Dein Profil muss gesichert werden.'
 
+  role:
+    admin: Admin
+    user_manager: User Manager
+    pre_user_manager: '*User Manager'
+    bambi: User noch nicht aktiviert
+
   activerecord:
     attributes:
       user:
@@ -58,6 +64,7 @@ de:
         otp_active: Security Status
         predefined_roles: Rollen
         predefined_roles_info: werden aktiv wenn der User sein Profil aktiviert
+        predefinition_blank: keine - (Mehrfachauswahl mit Ctrl/Strg)
     errors:
       models:
         user:
@@ -69,6 +76,7 @@ de:
               form: Eine gültige Email-Adresse ist erforderlich.
             username:
               blank: darf nicht leer sein.
+              taken: existiert schon bei einem User
               form: Username ist erforderlich.
             password:
               form: Mindestens 8 Zeichen sind erforderlich.

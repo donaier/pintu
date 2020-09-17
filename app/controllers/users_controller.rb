@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: I18n.t('user.create.success') }
+        format.html { redirect_to edit_user_path @user, notice: I18n.t('user.create.success') }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -48,7 +48,13 @@ class UsersController < ApplicationController
 
   def enable
     @user.update_attribute(:otp_required_for_login, true)
-    @user.remove_role(:bambi) if @user.has_role? :bambi
+    @user.remove_role(:bambi)
+    @user.roles.each do |role|
+      @user.remove_role role.name
+      @user.add_role role.name.delete_prefix('pre_')
+      @user.save!
+    end
+
     redirect_to @user
   end
 

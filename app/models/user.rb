@@ -5,5 +5,5 @@ class User < ApplicationRecord
           :otp_secret_encryption_key => ENV['encrypt_key']
 
   validates :email, :username, presence: true
-  validates :email, uniqueness: true
+  validates :email, :username, uniqueness: true
 end

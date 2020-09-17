@@ -20,10 +20,32 @@
       = f.email_field :email, class: 'form-control mb-4', required: true
       .invalid-feedback
         = I18n.t('activerecord.errors.models.user.attributes.email.form')
-  - unless @user.persisted?
-    = render 'predefined_roles', f: f
 
-  - if can?(:update, @user) && @user.persisted?
-    = render 'roles_and_security', f: f
+  - if not @user.persisted?
+    .form-row
+      .col-2
+        = f.label :password
+      .col-4
+        = f.password_field :password, class: 'form-control mb-4', required: true, minlength: 8
+        .invalid-feedback
+          = I18n.t('activerecord.errors.models.user.attributes.password.form')
+    .form-row
+      .col-6.text-right
+        .actions.pt-2
+          = f.submit I18n.t('save'), class: 'btn btn-save'
 
-= render 'password_form'
+
+  - if @user.persisted?
+    .form-row
+      .col-6.text-right
+        .actions.py-2
+          %button.btn{ type: 'button', 'data-toggle': 'modal', 'data-target': '#passwordForm'}
+            = I18n.t('user.change_password')
+          = f.submit I18n.t('save'), class: 'btn btn-save'
+
+
+    .form
+      = render 'security', f: f
+      = render 'roles', f: f
+
+= render 'password_popup'
