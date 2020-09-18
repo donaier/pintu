@@ -22,14 +22,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.add_role(:bambi)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to edit_user_path @user, notice: I18n.t('user.create.success') }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      redirect_to edit_user_path @user, notice: I18n.t('user.create.success')
+    else
+      render :new
     end
   end
 

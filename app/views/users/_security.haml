@@ -8,6 +8,7 @@
     .icon-toggler.small{ class: @user.otp_required_for_login? ? 'on' : 'off' }
       = svg 'lock'
       .on
+        = svg 'check'
         %strong= I18n.t('active')
       .off
         %p= I18n.t('inactive')

@@ -18,6 +18,12 @@ de:
   add: '+ hinzufügen'
   predefine: '+ vormerken'
 
+  nav:
+    users: User
+    user:
+      create: erstellen
+      roles: Rollen
+
   devise:
     sessions:
       user:
@@ -45,6 +51,7 @@ de:
     confirm_delete: User %{user} wirklich löschen?
     confirm_revoke_role: Rolle %{role} wirklich entfernen?
     safety_warning: 'Dein Profil muss gesichert werden.'
+    logout: '%{user} ausloggen'
 
   role:
     admin: Admin

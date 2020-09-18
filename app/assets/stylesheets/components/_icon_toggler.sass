@@ -1,0 +1,39 @@
+.icon-toggler
+  position: relative
+  height: 35px
+  width: 35px
+  padding: 3px
+  margin: 5px
+  svg
+    height: 100%
+    width: 100%
+  &.small
+    height: 30px
+    width: 30px
+    &.on .on svg
+      height: 16px
+      left: -20px
+
+  &.on
+    .on
+      display: block
+      svg
+        position: absolute
+        height: 20px
+        width: 20px
+        left: -16px
+        top: 8px
+        path
+          fill: $emerald
+    svg path
+      fill: $blue
+  &.off
+    .off
+      display: block
+    svg path
+      fill: darken($offwhite-d, 15%)
+  .on, .off
+    display: none
+    position: absolute
+    top: 8px
+    left: 32px

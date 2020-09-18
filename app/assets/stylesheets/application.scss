@@ -1,10 +1,13 @@
 @import 'bootstrap/scss/bootstrap';
 
-@import 'parts/variables';
+@import 'variables';
+
+@import 'components/icon_toggler';
+@import 'components/alerts';
+@import 'components/forms';
+@import 'components/nav';
+
 @import 'parts/base';
-@import 'parts/alerts';
-@import 'parts/forms';
 @import 'parts/auth';
-@import 'parts/nav';
 @import 'parts/main';
 @import 'parts/welcome';

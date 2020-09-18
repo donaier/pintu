@@ -18,6 +18,7 @@
     %nav#sidebarMenu.col-md-3.col-lg-2.d-md-block.sidebar.collapse
       .sidebar-sticky
         %ul.nav.flex-column
+          // placeholder content
           .nav-item.primary.humans
             = link_to 'Menschen', root_path, class: 'nav-link'
           .nav-item.secondary.add
@@ -28,11 +29,14 @@
             = link_to 'erstellen', root_path, class: 'nav-link'
           .nav-item.secondary.exclamation
             = link_to 'auswerten', root_path, class: 'nav-link'
+
         - if can? :manage, User
           %ul.nav.flex-column.admin
             .nav-item.primary.users
-              = link_to 'Mitarbeiter', users_path, class: 'nav-link'
+              = link_to I18n.t('nav.users'), users_path, class: 'nav-link'
+            .nav-item.secondary.add
+              = link_to I18n.t('nav.user.create'), new_user_path, class: 'nav-link'
 
         %ul.nav.flex-column.logout.text-center
           .nav-item
-            = link_to current_user.username + ' ausloggen', destroy_user_session_path, :method => :delete, class: 'nav-link'
+            = link_to I18n.t('user.logout', user: current_user.username), destroy_user_session_path, :method => :delete, class: 'nav-link'

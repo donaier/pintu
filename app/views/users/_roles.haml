@@ -7,10 +7,10 @@
       = f.label :roles
     .col-4
       %ul.list-group-flush
-        - roles = @user.has_role?(:bambi) ? Role.for_new_user : Role.real
-        - roles.each do |role|
-          %li.list-group-item
-            - if can? :manage, @user
+        - if can? :manage, @user
+          - roles = @user.has_role?(:bambi) ? Role.for_new_user : Role.real
+          - roles.each do |role|
+            %li.list-group-item
               - if @user.has_role?(role.name)
                 %strong= I18n.t("role.#{role.name}")
                 = link_to I18n.t('remove'), revoke_role_user_path(@user, role: role.name), class: 'badge badge-pill badge-light  float-right'
@@ -18,3 +18,7 @@
                 = I18n.t("role.#{role.name}")
                 = link_to add_role_user_path(@user, role:role.name), class: 'badge badge-pill badge-dark float-right' do
                   = I18n.t(@user.has_role?(:bambi) ? 'predefine' : 'add')
+        - else
+          - @user.roles.each do |role|
+            %li.list-group-item
+              = I18n.t("role.#{role.name}").html_safe
