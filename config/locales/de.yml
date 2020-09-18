@@ -50,7 +50,7 @@ de:
     admin: Admin
     user_manager: User Manager
     pre_user_manager: '*User Manager'
-    bambi: User noch nicht aktiviert
+    bambi: <i>User noch nicht aktiviert</i>
 
   activerecord:
     attributes:

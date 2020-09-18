@@ -25,8 +25,7 @@
                 = user.username
             %td= user.email
             %td
-              - user.roles.each do |role|
-                = role.name.humanize
+              = index_roles(user).html_safe
             %td.p-0
               .icon-toggler{ class: user.otp_required_for_login? ? 'on' : 'off' }
                 = svg 'lock'

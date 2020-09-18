@@ -49,6 +49,6 @@
           %ul.list-group-flush
             - @user.roles.each do |role|
               %li.list-group-item
-                = I18n.t("role.#{role.name}")
+                = I18n.t("role.#{role.name}").html_safe
 
 = render 'qrcode'
