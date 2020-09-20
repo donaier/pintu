@@ -16,6 +16,9 @@ module Pintu
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    config.i18n.default_locale = :de
+    config.i18n.available_locales = [:de, :de_SIE]
+
     config.to_prepare do
       Devise::SessionsController.layout "auth"
     end

@@ -1,12 +1,12 @@
-de:
+de_SIE:
   de: 'Deutsch (Du)'
   de_SIE: 'Deutsch (Sie)'
 
   welcome_user: Hallo %{username}!
-  welcome_info: Gut, dass du wieder da bist.
-  welcome_info_bambi: Gut, dass du da bist.
-  bambi_info: 'Für den weiteren Zugriff muss dein Profil mit einem Code geschützt werden. Dieser liefert das <b>Google Authenticator</b> App.</br></br> Halte die Handy-App bereit, um den QR-Code zu scannen.'
-  bambi_instructions: 'Nach dem Aktivieren wirst du zu deinem Profil weitergeleitet, wo du den QR-Code scannen musst, um den Zugangscode für zukünftige Logins zu erhalten.'
+  welcome_info: Gut, dass Sie wieder da sind.
+  welcome_info_bambi: Gut, dass Sie da sind.
+  bambi_info: 'Für den weiteren Zugriff muss Ihr Profil mit einem Code geschützt werden. Dieser liefert das <b>Google Authenticator</b> App.</br></br> Halten Sie die Handy-App bereit, um den QR-Code zu scannen.'
+  bambi_instructions: 'Nach dem Aktivieren werden Sie zu ihrem Profil weitergeleitet, wo Sie den QR-Code scannen müssen, um den Zugangscode für zukünftige Logins zu erhalten.'
 
   save: Speichern
   edit: Bearbeiten
@@ -34,8 +34,8 @@ de:
         signed_in: Erfolgreich angemeldet!
     failure:
       user:
-        already_authenticated: Du bist schon angemeldet.
-        unauthenticated: Du musst dich anmelden.
+        already_authenticated: Sie sind schon angemeldet.
+        unauthenticated: Sie müssen sich anmelden.
         invalid: 'Falsche Anmeldedaten'
         not_found_in_database: 'Keinen User mit dieser Email Adresse gefunden'
 
@@ -59,7 +59,7 @@ de:
     change_password_placeholder: 'LängerIstSicherer!keineScheu'
     confirm_delete: User %{user} wirklich löschen?
     confirm_revoke_role: Rolle %{role} wirklich entfernen?
-    safety_warning: 'Dein Profil muss gesichert werden.'
+    safety_warning: 'Ihr Profil muss gesichert werden.'
     logout: '%{user} ausloggen'
 
   role:

@@ -9,9 +9,15 @@
     = link_to user_path(current_user) do
       %li.nav-item.ni-2
         = svg 'id-card'
-    = link_to '#' do
-      %li.nav-item.ni-3
+    .with-dropdown
+      %li.nav-item.ni-3#settingsButton{ 'data-toggle': 'dropdown', 'aria-haspopup': true, 'aria-expanded': false}
         = svg 'cog'
+      .dropdown-menu{ 'aria-labelledby': 'settingsButton' }
+        %h6.dropdown-header= I18n.t('nav.languages')
+        - I18n.available_locales.each do |locale|
+          = link_to I18n.t(locale), "/#{locale}", class: "dropdown-item #{I18n.locale == locale ? 'active' : ''}"
+        %hr
+        = link_to I18n.t('user.logout', user: current_user.username), destroy_user_session_path, :method => :delete, class: 'dropdown-item'
 
 .container-fluid
   .row
