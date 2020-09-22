@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
+  before_action :authenticate_user!
   before_action :set_user, only: [:show, :edit, :update, :destroy, :enable, :update_password, :add_role, :revoke_role]
   before_action :set_qr, only: [:show, :edit]
 
@@ -10,12 +11,24 @@ class UsersController < ApplicationController
 
   def show
   end
+  def my_show
+    @user = current_user
+    @mine = true
+    set_qr
+    render :show
+  end
 
   def new
     @user = User.new
   end
 
   def edit
+  end
+  def my_edit
+    @user = current_user
+    @mine = true
+    set_qr
+    render :edit
   end
 
   def create
@@ -36,8 +49,11 @@ class UsersController < ApplicationController
     end
 
     if @user.update(user_params)
-      bypass_sign_in(@user)
-      redirect_to @user, notice: I18n.t('user.update.success')
+      if @user == current_user
+        redirect_to my_show_path, notice: I18n.t('user.update.success')
+      else
+        redirect_to @user, notice: I18n.t('user.update.success')
+      end
     else
       render :edit
     end
@@ -68,6 +84,10 @@ class UsersController < ApplicationController
   def revoke_role
     @user.remove_role params[:role]
     redirect_to edit_user_path @user
+  end
+
+  def messages
+    @receipts = current_user.receipts
   end
 
   private

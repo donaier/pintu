@@ -13,8 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    update_attrs = [:password, :password_confirmation, :current_password]
-    devise_parameter_sanitizer.permit(:account_update, keys: update_attrs)
+    devise_parameter_sanitizer.permit(:account_update, keys: [:password])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:otp_attempt])
   end
 end

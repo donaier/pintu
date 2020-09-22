@@ -1,6 +1,9 @@
 .title-box
   %h1
-    = link_to @user.username, user_path(@user)
+    - if @mine
+      = link_to @user.username, my_show_path
+    - else
+      = link_to @user.username, user_path(@user)
     = I18n.t('edit').downcase
 
 .row

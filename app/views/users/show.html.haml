@@ -1,6 +1,8 @@
 .title-box
   %h1= @user.username
-  - if can? :read, @user
+  - if @mine
+    = link_to t('edit'), my_edit_path, class: 'edit-link'
+  - elsif can? :read, @user
     = link_to I18n.t('edit'), edit_user_path(@user), class: 'edit-link'
 
 .row

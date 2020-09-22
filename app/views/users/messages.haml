@@ -1,0 +1,5 @@
+%ul
+  - @receipts.each do |receipt|
+    %li
+      %strong= receipt.message.subject
+      = receipt.message.body

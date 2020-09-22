@@ -55,7 +55,7 @@ de:
     destroy:
       success: User gelöscht.
     change_password: Passwort ändern
-    change_password_info: 'Das neue Passwort wird in Klartext angezeigt.<br>Mindestens 8 Zeichen sind erforderlich.<br><br><i>lange Passwörter kann man sich gut merken und sind schwer zu raten.</i>'
+    change_password_info: 'Das neue Passwort wird in Klartext angezeigt<br>Mindestens 8 Zeichen sind erforderlich.<br><br><strong>Nach dem Ändern musst du dich neu anmelden!</strong><br><br><i>lange Passwörter kann man sich gut merken und sind schwer zu raten.</i>'
     change_password_placeholder: 'LängerIstSicherer!keineScheu'
     confirm_delete: User %{user} wirklich löschen?
     confirm_revoke_role: Rolle %{role} wirklich entfernen?
