@@ -59,8 +59,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # usrconf
 gem 'haml-rails', '~> 2.0'
 
+# user management
 gem 'devise'
 gem 'devise-two-factor'
 gem 'rqrcode'
 gem 'rolify'
 gem 'cancancan'
+gem 'mailboxer'
