@@ -1,17 +1,17 @@
 .title-box
-  %h1= I18n.t('user.title')
+  %h1= t('user.title')
   - if can? :manage, User
-    = link_to I18n.t('create').downcase, new_user_path, class: 'add-link'
+    = link_to t('create').downcase, new_user_path, class: 'add-link'
 
 .row
   .col-10
     %table.table.table-borderless.table-hover
       %thead
         %tr
-          %th= I18n.t('activerecord.attributes.user.username')
-          %th= I18n.t('activerecord.attributes.user.email')
-          %th= I18n.t('activerecord.attributes.user.roles')
-          %th= I18n.t('activerecord.attributes.user.otp_active')
+          %th= t('activerecord.attributes.user.username')
+          %th= t('activerecord.attributes.user.email')
+          %th= t('activerecord.attributes.user.roles')
+          %th= t('activerecord.attributes.user.otp_active')
           %th
 
       %tbody
@@ -36,5 +36,5 @@
                 = link_to edit_user_path(user), class: 'icon-link' do
                   = svg 'pencil'
               - if can? :destroy, user
-                = link_to user, method: :delete, data: { confirm: I18n.t('user.confirm_delete', user: user.username) }, class: 'icon-link' do
+                = link_to user, method: :delete, data: { confirm: t('user.confirm_delete', user: user.username) }, class: 'icon-link' do
                   = svg 'trashcan'

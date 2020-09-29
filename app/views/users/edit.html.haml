@@ -4,7 +4,7 @@
       = link_to @user.username, my_show_path
     - else
       = link_to @user.username, user_path(@user)
-    = I18n.t('edit').downcase
+    = t('edit').downcase
 
 .row
   .col-10

@@ -1,5 +1,29 @@
-%ul
-  - @receipts.each do |receipt|
-    %li
-      %strong= receipt.message.subject
-      = receipt.message.body
+.title-box
+  %h1= t('messages.title')
+
+.row
+  .col-6
+    %table.table.table-borderless.table-hover
+      %thead
+        %tr
+          %th= t('messages.subject')
+          %th= t('messages.sender')
+          %th= t('messages.send_date')
+          %th
+
+      %tbody
+        - @inbox.each do |conversation|
+          - conversation.receipts_for(current_user).each do |receipt|
+            %tr{ class: receipt.is_unread? ? 'table-warning' : '' }
+              %td.p-0
+                = link_to receipt.message.subject, messages_path(mID: receipt), class: 'block-link'
+              %td= receipt.message.sender.username
+              %td= receipt.message.created_at.to_s(:short)
+
+  .col-6
+    .card.mt-2
+      .card-header
+        %p.m-0= @message ? message_header(current_user, @message).html_safe : ''
+      .card-body
+        %h5.card-title= @message.try(:subject)
+        %p.card-text= @message.try(:body)

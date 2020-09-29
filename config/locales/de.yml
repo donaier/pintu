@@ -21,6 +21,13 @@ de:
   add: '+ hinzufügen'
   predefine: '+ vormerken'
 
+  messages:
+    title: Nachrichten
+    subject: Betreff
+    sender: Absender
+    send_date: Datum
+    from_and_at: "Von <strong>%{sender}</strong> am %{date}"
+
   nav:
     users: User
     user:
@@ -60,7 +67,7 @@ de:
     confirm_delete: User %{user} wirklich löschen?
     confirm_revoke_role: Rolle %{role} wirklich entfernen?
     safety_warning: 'Dein Profil muss gesichert werden.'
-    logout: '%{user} ausloggen'
+    logout: '%{user} abmelden'
 
   role:
     admin: Admin

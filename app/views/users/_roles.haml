@@ -12,13 +12,13 @@
           - roles.each do |role|
             %li.list-group-item
               - if @user.has_role?(role.name)
-                %strong= I18n.t("role.#{role.name}")
-                = link_to I18n.t('remove'), revoke_role_user_path(@user, role: role.name), class: 'badge badge-pill badge-light  float-right'
+                %strong= t("role.#{role.name}")
+                = link_to t('remove'), revoke_role_user_path(@user, role: role.name), class: 'badge badge-pill badge-light  float-right'
               - else
-                = I18n.t("role.#{role.name}")
+                = t("role.#{role.name}")
                 = link_to add_role_user_path(@user, role:role.name), class: 'badge badge-pill badge-dark float-right' do
-                  = I18n.t(@user.has_role?(:bambi) ? 'predefine' : 'add')
+                  = t(@user.has_role?(:bambi) ? 'predefine' : 'add')
         - else
           - @user.roles.each do |role|
             %li.list-group-item
-              = I18n.t("role.#{role.name}").html_safe
+              = t("role.#{role.name}").html_safe

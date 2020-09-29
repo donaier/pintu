@@ -87,7 +87,12 @@ class UsersController < ApplicationController
   end
 
   def messages
-    @receipts = current_user.receipts
+    @inbox = current_user.mailbox.inbox
+
+    if current_user.receipts.where(id: params[:mID]).any?
+      @message = current_user.receipts.find(params[:mID]).message
+      current_user.mark_as_read(@message)
+    end
   end
 
   private
