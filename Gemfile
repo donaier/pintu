@@ -58,6 +58,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # usrconf
 gem 'haml-rails', '~> 2.0'
+gem 'twitter-bootstrap-rails'
 
 # user management
 gem 'devise'
