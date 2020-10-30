@@ -10,7 +10,7 @@ Role.create(name: 'admin')
 Role.create(name: 'user_manager')
 Role.create(name: 'pre_user_manager')
 
-admin = User.create(email: 'admin@pintu.ch', password: ENV['admin_password'])
+admin = User.create(email: 'admin@pintu.ch', username: 'admin', password: ENV['admin_password'])
 admin.add_role :admin
 admin.otp_secret = User.generate_otp_secret
 admin.save!
