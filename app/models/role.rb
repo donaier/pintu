@@ -16,7 +16,8 @@ class Role < ApplicationRecord
     'pre_user_manager'
   ]
   real_roles = [
-    'user_manager'
+    'user_manager',
+    'testrolle'
   ]
 
   scope :for_new_user, -> { where(name: roles_for_new_users) }

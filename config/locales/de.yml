@@ -69,11 +69,22 @@ de:
     safety_warning: 'Dein Profil muss gesichert werden.'
     logout: '%{user} abmelden'
 
+  roles:
+    title: Rollen
+
   role:
     admin: Admin
     user_manager: User Manager
     pre_user_manager: '*User Manager'
     bambi: <i>User noch nicht aktiviert</i>
+    included_users: User
+    delete: Rolle löschen
+    confirm_delete: Rolle %{role} wirklich löschen?
+    detail_info:
+      admin: Administrator (alle Rechte)
+      user_manager: User Manager
+      pre_user_manager: Vorgemerkt als User Manager (nach Aktivierung aktiv)
+      bambi: Neuer User, noch nicht aktiviert
 
   activerecord:
     attributes:

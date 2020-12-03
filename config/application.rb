@@ -18,6 +18,7 @@ module Pintu
 
     config.i18n.default_locale = :de
     config.i18n.available_locales = [:de, :de_SIE]
+    config.i18n.fallbacks = [:de]
 
     config.to_prepare do
       Devise::SessionsController.layout "auth"

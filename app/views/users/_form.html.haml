@@ -1,10 +1,13 @@
 = form_for @user, html: { class: 'py-4 form needs-validation', novalidate: true } do |f|
   - if @user.errors.any?
     #error_explanation
-      %strong= t('activerecord.errors.models.user.error_flash')
-      %ul
-        - @user.errors.full_messages.each do |message|
-          %li= message
+      .row.alert
+        .col-2
+          %strong= t('activerecord.errors.models.user.error_flash')
+        .col-4
+          %ul
+            - @user.errors.full_messages.each do |message|
+              %li= message
 
   .form-row
     .col-2

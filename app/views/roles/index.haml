@@ -1,0 +1,25 @@
+.title-box
+  %h1= t('roles.title')
+
+.row
+  .col-10
+    %table.table.table-borderless.table-hover
+      %thead
+        %tr
+          %th
+          %th= I18n.t('role.included_users')
+          %th.text-right= I18n.t('role.delete')
+
+      %tbody
+        - @roles.each do |role|
+          %tr
+            %td
+              %strong= I18n.t("role.detail_info.#{role.name}")
+            %td
+              - User.with_role(role.name).each do |u|
+                = link_to u.username, edit_user_path(u)
+                %br
+            %td.p-0.text-right
+              - if (can? :manage, User) && (Role.real.exists?(role.id) || Role.for_new_user.exists?(role.id))
+                = link_to role_path(role), method: :delete, data: { confirm: t('role.confirm_delete', role: role.name) }, class: 'icon-link' do
+                  = svg 'trashcan'

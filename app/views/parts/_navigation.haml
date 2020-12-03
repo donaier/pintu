@@ -25,23 +25,26 @@
       .sidebar-sticky
         %ul.nav.flex-column
           // placeholder content
-          .nav-item.primary.humans
+          %li.nav-item.primary.humans
             = link_to 'Menschen', root_path, class: 'nav-link'
-          .nav-item.secondary.add
+          %li.nav-item.secondary.add
             = link_to 'erstellen', root_path, class: 'nav-link'
-          .nav-item.primary.courses
+          %li.nav-item.primary.courses
             = link_to 'Kurse', root_path, class: 'nav-link'
-          .nav-item.secondary.add
+          %li.nav-item.secondary.add
             = link_to 'erstellen', root_path, class: 'nav-link'
-          .nav-item.secondary.exclamation
+          %li.nav-item.secondary.exclamation
             = link_to 'auswerten', root_path, class: 'nav-link'
 
         - if can? :manage, User
           %ul.nav.flex-column.admin
-            .nav-item.primary.users
+            %li.nav-item.primary.users
               = link_to I18n.t('nav.users'), users_path, class: 'nav-link'
-            .nav-item.secondary.add
+            %li.nav-item.secondary.add
               = link_to I18n.t('nav.user.create'), new_user_path, class: 'nav-link'
+            %li.nav-item.secondary.exclamation
+              = link_to I18n.t('nav.user.roles'), roles_path, class: 'nav-link'
+
 
         %ul.nav.flex-column.logout.text-center
           .nav-item

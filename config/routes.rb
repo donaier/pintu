@@ -10,6 +10,8 @@ Rails.application.routes.draw do
         get :revoke_role, on: :member
       end
 
+      resources :roles
+
       get :messages, controller: 'users', path: '/my/messages'
       get :my_show, controller: 'users', path: '/my/profile'
       get :my_edit, controller: 'users', path: '/my/profile/edit'
