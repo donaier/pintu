@@ -11,8 +11,8 @@ Rails.application.routes.draw do
       end
 
       resources :roles
+      resources :messages
 
-      get :messages, controller: 'users', path: '/my/messages'
       get :my_show, controller: 'users', path: '/my/profile'
       get :my_edit, controller: 'users', path: '/my/profile/edit'
     end

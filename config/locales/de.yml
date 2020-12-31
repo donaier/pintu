@@ -13,6 +13,7 @@ de:
   create: Erstellen
   active: Aktiviert
   inactive: Deaktiviert
+  send: Senden
   qr: QR-Code
   show_qr: QR-Code Anzeigen
   qr_info: QR-Code muss mit Google Authenticator App gescannt werden.
@@ -27,6 +28,7 @@ de:
     sender: Absender
     send_date: Datum
     from_and_at: "Von <strong>%{sender}</strong> am %{date}"
+    new: Nachricht erstellen
 
   nav:
     users: User
@@ -99,6 +101,10 @@ de:
         predefined_roles: Rollen
         predefined_roles_info: werden aktiv wenn der User sein Profil aktiviert
         predefinition_blank: keine - (Mehrfachauswahl mit Ctrl/Strg)
+      message:
+        subject: Betreff
+        recipients: Empfänger
+        body: Nachricht
     errors:
       models:
         user:
@@ -115,3 +121,9 @@ de:
             password:
               form: Mindestens 8 Zeichen sind erforderlich.
             password_confirmation:
+        message:
+          attributes:
+            subject:
+              form: Betreff ist erforderlich.
+            recipients:
+              form: Empfänger ist erforderlich.

@@ -1,5 +1,6 @@
 .title-box
   %h1= t('messages.title')
+  = link_to t('create').downcase, new_message_path, class: 'add-link'
 
 .row
   .col-6
