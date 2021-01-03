@@ -1,32 +1,35 @@
 .title-box
   %h1= t('messages.title')
-  = link_to t('create').downcase, new_message_path, class: 'add-link'
+  - if can? :create, Mailboxer
+    = link_to t('create').downcase, new_message_path, class: 'add-link'
 
 .row
-  .col-6
-    %table.table.table-borderless.table-hover
-      %thead
-        %tr
-          %th= t('messages.subject')
-          %th= t('messages.sender')
-          %th= t('messages.send_date')
-          %th
+  - if @inbox.empty?
+    = render 'parts/nothing'
+  - else
+    .col-6
+      %table.table.table-borderless.table-hover
+        %thead
+          %tr
+            %th= t('messages.subject')
+            %th= t('messages.sender')
+            %th= t('messages.send_date')
+            %th
 
-      %tbody
-        - @inbox.each do |conversation|
-          - conversation.receipts_for(current_user).where(deleted: false).each do |receipt|
-            %tr{ class: receipt.is_unread? ? 'table-warning' : '' }
-              %td.p-0
-                = link_to receipt.message.subject, messages_path(mID: receipt), class: 'block-link'
-              %td= receipt.message.sender.username
-              %td= receipt.message.created_at.to_s(:short)
-              %td.p-0.text-right
-                = link_to message_path(receipt), method: :delete, data: { confirm: t('messages.confirm_delete', subject: receipt.message.subject) }, class: 'icon-link' do
-                  = svg 'trashcan'
+        %tbody
+          - @inbox.each do |conversation|
+            - conversation.receipts_for(current_user).where(deleted: false, mailbox_type: 'inbox').each do |receipt|
+              %tr{ class: receipt.is_unread? ? 'table-warning' : '' }
+                %td.p-0
+                  = link_to receipt.message.subject, messages_path(mID: receipt), class: 'block-link'
+                %td= receipt.message.sender.username
+                %td= receipt.message.created_at.to_s(:short)
+                %td.p-0.text-right
+                  -# = link_to message_path(receipt), method: :delete, data: { confirm: t('messages.confirm_delete', subject: receipt.message.subject) }, class: 'icon-link' do
+                  -#   = svg 'trashcan'
 
-
-  .col-6
-    - if @message
+  - if @message
+    .col-6
       .card.mt-2
         .card-header
           %p.m-0= @message ? message_header(current_user, @message).html_safe : ''

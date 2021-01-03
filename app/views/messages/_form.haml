@@ -4,7 +4,10 @@
     .col-2
       = f.label :recipients, t('activerecord.attributes.message.recipients')
     .col-4
-      = f.text_field :recipients, class: 'form-control mb-4', required: true
+      %fieldset{ disabled: true }
+        = f.text_field :recipients, class: 'form-control mb-4', placeholder: 'Alle', required: true
+        -# = f.text_field :recipients, class: 'form-control mb-4', required: true
+
       .invalid-feedback
         = t('activerecord.errors.models.message.attributes.recipients.form')
   .form-row

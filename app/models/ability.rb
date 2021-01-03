@@ -13,6 +13,7 @@ class Ability
 
     if user.has_role? :admin
       can :manage, User
+      can :create, Mailboxer
     end
 
     if user.has_role? :user_manager

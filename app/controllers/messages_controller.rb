@@ -15,11 +15,15 @@ class MessagesController < ApplicationController
   end
 
   def create
-    params[:mailboxer_message]
-    recipient = User.find_by_username(params[:mailboxer_message][:recipients])
-
-    if recipient
-      current_user.send_message(recipient, params[:mailboxer_message][:body], params[:mailboxer_message][:subject])
+    if params[:mailboxer_message][:recipients]
+      recipient = User.find_by_username(params[:mailboxer_message][:recipients])
+      if recipient
+        current_user.send_message(recipient, params[:mailboxer_message][:body], params[:mailboxer_message][:subject])
+      end
+    else
+      User.all.each do |u|
+        current_user.send_message(u, params[:mailboxer_message][:body], params[:mailboxer_message][:subject])
+      end
     end
 
     redirect_to messages_path, alert: I18n.t('messages.send_success')

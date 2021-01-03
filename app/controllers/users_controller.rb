@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :enable, :update_password, :add_role, :revoke_role]
   before_action :set_qr, only: [:show, :edit]
 
-
   def index
     @users = User.all
   end
