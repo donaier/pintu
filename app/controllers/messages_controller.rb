@@ -19,7 +19,14 @@ class MessagesController < ApplicationController
     recipient = User.find_by_username(params[:mailboxer_message][:recipients])
 
     if recipient
-      current_user.send_message(recipient, params[:mailboxer_message][:subject], params[:mailboxer_message][:body])
+      current_user.send_message(recipient, params[:mailboxer_message][:body], params[:mailboxer_message][:subject])
     end
+
+    redirect_to messages_path, alert: I18n.t('messages.send_success')
+  end
+
+  def destroy
+    current_user.receipts.where(id: params[:id]).mark_as_deleted
+    redirect_to messages_path
   end
 end

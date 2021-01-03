@@ -6,6 +6,8 @@
     = link_to messages_path do
       %li.nav-item.ni-1
         = svg 'envelope'
+        - unless current_user.unread_inbox_count.zero?
+          %span{ class: 'badge badge-pill badge-new' }= current_user.unread_inbox_count
     = link_to my_show_path do
       %li.nav-item.ni-2
         = svg 'id-card'

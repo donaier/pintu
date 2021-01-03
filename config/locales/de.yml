@@ -29,6 +29,8 @@ de:
     send_date: Datum
     from_and_at: "Von <strong>%{sender}</strong> am %{date}"
     new: Nachricht erstellen
+    confirm_delete: "Nachricht '%{subject}' löschen?"
+    send_success: Nachricht gesendet.
 
   nav:
     users: User

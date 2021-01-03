@@ -14,17 +14,22 @@
 
       %tbody
         - @inbox.each do |conversation|
-          - conversation.receipts_for(current_user).each do |receipt|
+          - conversation.receipts_for(current_user).where(deleted: false).each do |receipt|
             %tr{ class: receipt.is_unread? ? 'table-warning' : '' }
               %td.p-0
                 = link_to receipt.message.subject, messages_path(mID: receipt), class: 'block-link'
               %td= receipt.message.sender.username
               %td= receipt.message.created_at.to_s(:short)
+              %td.p-0.text-right
+                = link_to message_path(receipt), method: :delete, data: { confirm: t('messages.confirm_delete', subject: receipt.message.subject) }, class: 'icon-link' do
+                  = svg 'trashcan'
+
 
   .col-6
-    .card.mt-2
-      .card-header
-        %p.m-0= @message ? message_header(current_user, @message).html_safe : ''
-      .card-body
-        %h5.card-title= @message.try(:subject)
-        %p.card-text= @message.try(:body)
+    - if @message
+      .card.mt-2
+        .card-header
+          %p.m-0= @message ? message_header(current_user, @message).html_safe : ''
+        .card-body
+          %h5.card-title= @message.try(:subject)
+          %p.card-text= @message.try(:body)
